@@ -33,6 +33,7 @@ app.use(rateLimit({
 }));
 
 app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 app.use(promoRouter)
 app.use(schoolRouter)
 app.use(studdentRouter)

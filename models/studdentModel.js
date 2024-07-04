@@ -16,7 +16,8 @@ const studentSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: function (value) {
-        return /^[a-zA-ZÀ-ÖØ-öø-ÿ]{3,}$/.test(value);
+        return /^[a-zA-ZÀ-ÖØ-öø-ÿ' ]{3,30}$/.test(value);
+
       },
       message: "Entrez un prénom avec des caracteres alphabetique valide"
     }
@@ -27,6 +28,9 @@ const studentSchema = new mongoose.Schema({
     min: 18,
     max: 62
   },
+  avatar:{
+    type: String,
+  }
 });
 
 const Student = mongoose.model('students', studentSchema);
