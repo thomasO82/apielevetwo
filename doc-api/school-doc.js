@@ -14,11 +14,11 @@
  *             properties:
  *               name:
  *                 type: string
- *                 example: "OpenAI Academy"
+ *                 example: "Albatard Academy"
  *                 description: The name of the school
  *               email:
  *                 type: string
- *                 example: "contact@openai.academy"
+ *                 example: "contact@albatard.academy"
  *                 description: Contact email of the school
  *               password:
  *                 type: string
@@ -68,15 +68,15 @@
  *               properties:
  *                 name:
  *                   type: string
- *                   example: "OpenAI Academy"
+ *                   example: "Albatard Academy"
  *                   description: Name of the school
  *                 email:
  *                   type: string
- *                   example: "contact@openai.academy"
+ *                   example: "contact@albatard.academy"
  *                   description: Contact email of the school
  *                 slug:
  *                   type: string
- *                   example: "openai-academy"
+ *                   example: "albatard-academy"
  *                   description: Slug generated from the school name
  *                 promos:
  *                   type: array
