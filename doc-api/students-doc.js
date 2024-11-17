@@ -55,54 +55,8 @@
  *
  * /**
  * @openapi
- * /promos/{promoId}/students/{studentId}/avatar:
- *   get:
- *     summary: Retrieve a student's avatar if available
- *     tags: [Students]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: promoId
- *         required: true
- *         description: ID of the promo to which the student belongs
- *         schema:
- *           type: string
- *       - in: path
- *         name: studentId
- *         required: true
- *         description: The ID of the student to retrieve
- *         schema:
- *           type: string
- *     responses:
- *       '200':
- *         description: Returns the avatar image if it exists.
- *         content:
- *           application/json:
- *             example:
- *               firstName: "Alice"
- *               lastName: "Martin"
- *               age: 22
- *               avatar: "alice-avatar.jpg"
- *           image/jpeg:
- *             schema:
- *               type: string
- *               format: binary
- *             description: Returns the student's avatar image if available.
- *       '404':
- *         description: Student or promo not found
- *         content:
- *           application/json:
- *             example:
- *               message: "Cette ressource n'appartient pas à votre école"
- *       '500':
- *         description: Internal Server Error
- *         content:
- *           application/json:
- *             example:
- *               message: "Erreur lors de la récupération de l'étudiant"
- *
- *
+ * /promos/{promoId}/students/{studentId}:
+ *  
  *   put:
  *     summary: Update a student's details within a specific promo
  *     tags: [Students]
@@ -198,4 +152,52 @@
  *           application/json:
  *             example:
  *               message: "Internal Server Error"
+ * 
+ * @openapi
+ * /promos/{promoId}/students/{studentId}/avatar:
+ *   get:
+ *     summary: Retrieve a student's avatar if available
+ *     tags: [Students]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: promoId
+ *         required: true
+ *         description: ID of the promo to which the student belongs
+ *         schema:
+ *           type: string
+ *       - in: path
+ *         name: studentId
+ *         required: true
+ *         description: The ID of the student to retrieve
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Returns the avatar image if it exists.
+ *         content:
+ *           application/json:
+ *             example:
+ *               firstName: "Alice"
+ *               lastName: "Martin"
+ *               age: 22
+ *               avatar: "alice-avatar.jpg"
+ *           image/jpeg:
+ *             schema:
+ *               type: string
+ *               format: binary
+ *             description: Returns the student's avatar image if available.
+ *       '404':
+ *         description: Student or promo not found
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Cette ressource n'appartient pas à votre école"
+ *       '500':
+ *         description: Internal Server Error
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Erreur lors de la récupération de l'étudiant"
  */
