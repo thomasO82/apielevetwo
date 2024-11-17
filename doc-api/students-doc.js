@@ -53,9 +53,11 @@
  *             example:
  *               message: "Internal Server Error"
  *
+ * /**
+ * @openapi
  * /promos/{promoId}/students/{studentId}:
  *   get:
- *     summary: Retrieve a student's details by their ID within a specific promo
+ *     summary: Retrieve a student's avatar if available
  *     tags: [Students]
  *     security:
  *       - bearerAuth: []
@@ -74,7 +76,7 @@
  *           type: string
  *     responses:
  *       '200':
- *         description: Student details retrieved successfully
+ *         description: Returns the avatar image if it exists.
  *         content:
  *           application/json:
  *             example:
@@ -82,6 +84,11 @@
  *               lastName: "Martin"
  *               age: 22
  *               avatar: "alice-avatar.jpg"
+ *           image/jpeg:
+ *             schema:
+ *               type: string
+ *               format: binary
+ *             description: Returns the student's avatar image if available.
  *       '404':
  *         description: Student or promo not found
  *         content:
@@ -94,6 +101,7 @@
  *           application/json:
  *             example:
  *               message: "Erreur lors de la récupération de l'étudiant"
+ *
  *
  *   put:
  *     summary: Update a student's details within a specific promo
