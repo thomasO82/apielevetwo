@@ -7,7 +7,7 @@ const upload = require("../helper/upload")
 studdentRouter.post('/promos/:promoId/students',authguard,upload.single('avatar'), studdentController.createStudent)
 studdentRouter.put('/promos/:promoId/students/:studdentId',authguard,upload.single('avatar'), studdentController.updateStuddent)
 studdentRouter.delete('/promos/:promoId/students/:studdentId',authguard, studdentController.deleteStudent)
-studdentRouter.get('/promos/:promoId/students/:studdentId',authguard, studdentController.getStudent)
+studdentRouter.get('/promos/:promoId/students/:studdentId/avatar',authguard, studdentController.getStudent)
 
 
 

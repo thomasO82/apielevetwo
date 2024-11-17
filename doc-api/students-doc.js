@@ -55,7 +55,7 @@
  *
  * /**
  * @openapi
- * /promos/{promoId}/students/{studentId}:
+ * /promos/{promoId}/students/{studentId}/avatar:
  *   get:
  *     summary: Retrieve a student's avatar if available
  *     tags: [Students]
