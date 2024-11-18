@@ -6,8 +6,7 @@ const studentSchema = new mongoose.Schema({
     required: [true, "Le prénom est requis"],
     validate: {
       validator: function (value) {
-        return /^[a-zA-ZÀ-ÖØ-öø-ÿ]{3,}$/.test(value);
-      },
+        return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9' ]{3,30}$/.test(value);      },
       message: "Entrez un nom avec des caracteres alphabetique valide"
     }
   },

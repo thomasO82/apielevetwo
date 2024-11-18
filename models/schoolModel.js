@@ -13,8 +13,7 @@ const schoolSchema = new mongoose.Schema({
         require: [true, "le nom de votre ecole est requis"],
         validate: {
             validator: function (value) {
-                return /^[a-zA-Z0-9]{3,}$/.test(value);
-            },
+                return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9' ]{3,30}$/.test(value);            },
             message: "Le champ 'name' doit avoir au moins 5 caractères et être alphanumérique."
         }
     },
