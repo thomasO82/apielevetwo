@@ -1,5 +1,34 @@
 /**
  * @openapi
+ * tags:
+ *   - name: Promos
+ *     description: Operations related to promos
+ *   - name: Students
+ *     description: Operations related to students in promos
+ *
+ * components:
+ *   securitySchemes:
+ *     bearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
+ *   schemas:
+ *     Student:
+ *       type: object
+ *       properties:
+ *         firstName:
+ *           type: string
+ *           example: "Alice"
+ *         lastName:
+ *           type: string
+ *           example: "Martin"
+ *         age:
+ *           type: integer
+ *           example: 22
+ *         avatar:
+ *           type: string
+ *           format: binary
+ *
  * /promos/{promoId}/students:
  *   post:
  *     summary: Create a new student in a specific promo
@@ -19,20 +48,7 @@
  *       content:
  *         multipart/form-data:
  *           schema:
- *             type: object
- *             properties:
- *               firstName:
- *                 type: string
- *                 example: "Alice"
- *               lastName:
- *                 type: string
- *                 example: "Martin"
- *               age:
- *                 type: integer
- *                 example: 22
- *               avatar:
- *                 type: string
- *                 format: binary
+ *             $ref: '#/components/schemas/Student'
  *     responses:
  *       '201':
  *         description: Student created successfully
@@ -41,7 +57,7 @@
  *             example:
  *               message: "Created with success"
  *       '400':
- *         description: Validation Error
+ *         description: Validation error
  *         content:
  *           application/json:
  *             example:
@@ -53,10 +69,7 @@
  *             example:
  *               message: "Internal Server Error"
  *
- * /**
- * @openapi
  * /promos/{promoId}/students/{studentId}:
- *  
  *   put:
  *     summary: Update a student's details within a specific promo
  *     tags: [Students]
@@ -81,20 +94,7 @@
  *       content:
  *         multipart/form-data:
  *           schema:
- *             type: object
- *             properties:
- *               firstName:
- *                 type: string
- *                 example: "Alice"
- *               lastName:
- *                 type: string
- *                 example: "Martin"
- *               age:
- *                 type: integer
- *                 example: 23
- *               avatar:
- *                 type: string
- *                 format: binary
+ *             $ref: '#/components/schemas/Student'
  *     responses:
  *       '200':
  *         description: Student updated successfully
@@ -152,8 +152,7 @@
  *           application/json:
  *             example:
  *               message: "Internal Server Error"
- * 
- * @openapi
+ *
  * /promos/{promoId}/students/{studentId}/avatar:
  *   get:
  *     summary: Retrieve a student's avatar if available
