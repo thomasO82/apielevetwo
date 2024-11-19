@@ -32,8 +32,6 @@ exports.getOnePromo = async (req, res) => {
 
 exports.postPromo = async (req, res) => {
     try {
-	console.log('HAAAAAAAAAAA')
-	console.log(req.body)
         const promo = new promoModel(req.body);
         await promo.validate();
         await promo.save();

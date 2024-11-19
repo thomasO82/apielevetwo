@@ -97,6 +97,7 @@
  *             name: "Promo 2023"
  *             startDate: "2024-01-15"
  *             endDate: "2024-12-15"
+ *             formationDescription : "Developpeur web et web mobile" 
  *     responses:
  *       '201':
  *         description: Promo created successfully
@@ -173,6 +174,7 @@
  *             name: "Updated Promo 2023"
  *             startDate: "2024-02-01"
  *             endDate: "2024-11-30"
+ *             formationDescription : "Developpeur web et web mobile"  
  *     responses:
  *       '200':
  *         description: Promo updated successfully

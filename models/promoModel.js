@@ -39,6 +39,16 @@ const promoSchema = new mongoose.Schema({
             message: "La date de fin doit être ultérieure à la date de début."
         }
     },
+    formationDescription: {
+        type: String,
+        validate: {
+            validator: function (value) {
+                return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9' ]{3,30}$/.test(value);
+            },
+            message: "Le champ 'name' doit avoir au moins 5 caractères et être alphanumérique."
+        }
+    },
+
     createdAt: {
         type: Date,
         require: true
@@ -55,16 +65,16 @@ promoSchema.pre('save', function (next) {
         this.createdAt = new Date()
         next()
     } catch (error) {
-        next (error)
+        next(error)
     }
 });
 
-promoSchema.post('save', function (error,doc,next) {
+promoSchema.post('save', function (error, doc, next) {
     try {
         this.createdAt = new Date()
         next()
     } catch (error) {
-        next (error)
+        next(error)
     }
 });
 
