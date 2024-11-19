@@ -43,7 +43,7 @@ const promoSchema = new mongoose.Schema({
         type: String,
         validate: {
             validator: function (value) {
-                return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9 ']{3,100}$/.test(value);
+                return /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9']{3,100}$/.test(value);
             },
             message: "Le champ 'description' doit avoir au moins 5 caractères et être alphanumérique."
         }
