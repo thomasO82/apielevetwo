@@ -55,6 +55,8 @@
  *   patch:
  *     summary: Update the name of a school
  *     tags: [Schools]
+ *     security:
+ *       - bearerAuth: [] 
  *     requestBody:
  *       description: New school name to be updated
  *       required: true
