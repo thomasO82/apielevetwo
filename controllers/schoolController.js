@@ -25,6 +25,18 @@ exports.createSchool = async(req,res)=>{
     }
 }
 
+exports.patchSchool = async(req,res)=>{
+    try{
+       const result = await schoolModel.updateOne({_id: req.school},{name: req.body.name})
+        if (result.modifiedCount !== 1) {
+            throw new Error("La modification a échoué");
+        }
+        res.json("la modification a reussie")
+    }catch(error){
+        res.json(error)
+    }
+}
+
 exports.getMe = async(req,res)=>{
     try {
      const school = await schoolModel.findOne({ _id: req.school});

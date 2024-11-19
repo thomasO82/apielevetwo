@@ -51,6 +51,41 @@
  *           application/json:
  *             example:
  *               message: "Internal Server Error"
+ * 
+ *   patch:
+ *     summary: Update the name of a school
+ *     tags: [Schools]
+ *     requestBody:
+ *       description: New school name to be updated
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: "Updated Academy Name"
+ *                 description: The updated name of the school
+ *     responses:
+ *       '200':
+ *         description: Name updated successfully
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Name updated successfully"
+ *       '400':
+ *         description: Validation error (e.g., invalid data format)
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Validation error"
+ *       '500':
+ *         description: Internal Server Error
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Internal Server Error"
  *
  * /me:
  *   get:
