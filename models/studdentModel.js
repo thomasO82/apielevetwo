@@ -29,11 +29,7 @@ const studentSchema = new mongoose.Schema({
   },
   avatar:{
     type: String,
-    validate: {
-      validator: function (value) {
-        return /^[\w\s-]+\.[a-zA-Z0-9]{4}$/.test(value)
-      }
-    }
+   
   }
 });
 
