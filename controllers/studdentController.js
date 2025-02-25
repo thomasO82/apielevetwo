@@ -32,7 +32,7 @@ exports.updateStuddent = async (req, res) => {
             if (req.file) {
                 req.body.avatar = req.file.filename
             }
-            const result = await studentModel.updateOne({ _id: req.params.studdentId }, { $set: req.body });
+            const result = await studentModel.updateOne({ _id: req.params.studdentId }, { $set: req.body },{runValidators:true});
             if (result.modifiedCount > 0) {
                 res.status(200).json({ message: 'Updated with success' });
             } else {

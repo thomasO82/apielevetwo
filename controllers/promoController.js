@@ -53,7 +53,7 @@ exports.updatePromo = async (req, res) => {
         if (!existingPromo) {
             res.status(404).json({ message: "Cette ressource n'appartiens pas a votre école" });
         } else {
-            const result = await promoModel.updateOne({ _id: req.params.id }, { $set: req.body });
+            const result = await promoModel.updateOne({ _id: req.params.id }, { $set: req.body },{runValidators:true});
             if (result.modifiedCount > 0) {
                 res.status(200).json({ message: 'Updated with success' });
             } else {

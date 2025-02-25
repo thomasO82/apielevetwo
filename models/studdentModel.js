@@ -29,6 +29,12 @@ const studentSchema = new mongoose.Schema({
   },
   avatar:{
     type: String,
+    validate: {
+      validator: function (value){
+        return /^[^\/:*?"<>|]+\.[a-zA-Z0-9]+$/.test(value)
+      },
+      message: "le nom de l'image est invalide"
+    }
    
   }
 });

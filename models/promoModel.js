@@ -33,8 +33,10 @@ const promoSchema = new mongoose.Schema({
         required: [true, "le champs fin de la promo est requis"],
         type: Date,
         validate: {
-            validator: function (value) {
-                return value > this.startDate;
+            validator:  function(value)  {
+                console.log(this.get("startDate"));
+                
+                return value > this.get("startDate")
             },
             message: "La date de fin doit être ultérieure à la date de début."
         }
@@ -48,7 +50,6 @@ const promoSchema = new mongoose.Schema({
             message: "Le champ 'description' doit avoir au moins 5 caractères et être alphanumérique."
         }
     },
-
     createdAt: {
         type: Date,
         require: true
