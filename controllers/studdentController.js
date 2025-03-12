@@ -11,7 +11,7 @@ exports.createStudent = async(req,res)=>{
         await student.validate();
         await student.save();
         await promoModel.updateOne({ _id: req.params.promoId }, { $push: { students: student._id } });
-        res.status(201).json({ message: 'Created with success' });
+        res.status(201).json({ message: 'Created with success',data: student });
     } catch (error) {
         if (error.name === 'ValidationError') {
             res.status(400).json(error);
