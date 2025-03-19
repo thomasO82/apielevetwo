@@ -38,21 +38,21 @@ app.use(promoRouter)
 app.use(schoolRouter)
 app.use(studdentRouter)
 
-
-console.log("connection in process....");
-mongoose.connect(process.env.MONGOURI).then(() => {
-    app.listen(process.env.PORT, (err) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(`server listening on port ${process.env.PORT}`);
-            const currentDate = new Date();
-            currentDate.setDate(currentDate.getDate() + 3);
-
-
-        }
+// Ne se connecte à MongoDB que si ce n'est pas un test
+if (process.env.NODE_ENV !== 'test') {
+    console.log("connection in process....");
+    mongoose.connect(process.env.MONGOURI).then(() => {
+        app.listen(process.env.PORT, (err) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(`server listening on port ${process.env.PORT}`);
+            }
+        })
+    }).catch((error) => {
+        console.log(error);
     })
-}).catch((error) => {
-    console.log(error);
-})
+}
+
+module.exports = app;
 
