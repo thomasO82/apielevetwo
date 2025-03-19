@@ -36,7 +36,7 @@ exports.postPromo = async (req, res) => {
         await promo.validate();
         await promo.save();
         await schoolModel.updateOne({ _id: req.school }, { $push: { promos: promo._id } });
-        res.status(201).json({ message: 'Created with success' });
+        res.status(201).json({ message: 'Created with success', data : promo });
     } catch (error) {
         if (error.name === 'ValidationError') {
             res.status(400).json(error);
@@ -53,7 +53,7 @@ exports.updatePromo = async (req, res) => {
         if (!existingPromo) {
             res.status(404).json({ message: "Cette ressource n'appartiens pas a votre école" });
         } else {
-            const result = await promoModel.updateOne({ _id: req.params.id }, { $set: req.body });
+            const result = await promoModel.updateOne({ _id: req.params.id }, { $set: req.body },{runValidators:true});
             if (result.modifiedCount > 0) {
                 res.status(200).json({ message: 'Updated with success' });
             } else {
