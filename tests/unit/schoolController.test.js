@@ -54,6 +54,30 @@ describe('School controller tests unitaires', ()=>{
             expect(mockRes.status).toHaveBeenCalledWith(400)
             expect(mockRes.json).toHaveBeenCalledWith(validationError)
         })
+        it('devrait gerer les erreurs serveurs', async()=>{
+            const serverError = new Error("server error")
+            mockSchoolData.validate.mockRejectedValue(serverError)
+            await schoolController.createSchool(mockReq, mockRes)
+            expect(mockRes.status).toHaveBeenCalledWith(500)
+            expect(mockRes.json).toHaveBeenCalledWith(serverError)
+        }) 
+
+    })
+
+    describe('patch school' , ()=>{
+        beforeEach(()=>{
+            schoolModel.updateOne = jest.fn()
+    
+        })
+
+        it("devrait modifier ecole", async ()=>{
+            mockReq.body = {name: "blabla"}
+            schoolModel.updateOne.mockResolvedValue({modifiedCount : 1})
+
+            await schoolController.patchSchool(mockReq,mockRes)
+            expect(mockRes.json).toHaveBeenCalledWith("la modification a reussie")
+        })
+        
     })
 
    
