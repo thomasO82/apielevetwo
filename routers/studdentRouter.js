@@ -8,7 +8,9 @@ studdentRouter.post('/promos/:promoId/students',authguard,upload.single('avatar'
 studdentRouter.put('/promos/:promoId/students/:studdentId',authguard,upload.single('avatar'), studdentController.updateStuddent)
 studdentRouter.delete('/promos/:promoId/students/:studdentId',authguard, studdentController.deleteStudent)
 studdentRouter.get('/promos/:promoId/students/:studdentId/avatar',authguard, studdentController.getStudent)
-
+studdentRouter.get('/test',(req,res)=>{
+    res.status(200).json({message:"test"})
+})
 
 
 module.exports = studdentRouter

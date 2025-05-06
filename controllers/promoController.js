@@ -8,7 +8,6 @@ exports.getPromos = async (req, res) => {
             path: 'promos',
             match: filter,
         });
-        console.log(school);
         res.status(200).json(school.promos)
     } catch (error) {
         res.status(400).json(error)
@@ -53,9 +52,9 @@ exports.updatePromo = async (req, res) => {
         if (!existingPromo) {
             res.status(404).json({ message: "Cette ressource n'appartiens pas a votre école" });
         } else {
-            const result = await promoModel.updateOne({ _id: req.params.id }, { $set: req.body },{runValidators:true});
-            if (result.modifiedCount > 0) {
-                res.status(200).json({ message: 'Updated with success' });
+            const result = await promoModel.findByIdAndUpdate(req.params.id, { $set: req.body },{runValidators:true, new:true});
+            if (result) {
+                res.status(200).json({ message: 'Updated with success' , data: result });
             } else {
                 res.status(404).json({ message: "Can't Update" });
             }
