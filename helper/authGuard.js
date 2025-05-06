@@ -11,9 +11,11 @@ const authGuard = async (req, res, next) => {
         }
 
         const apiKey = authHeader.split(' ')[1];
-        const school = await schoolModel.findOne({ encryptedApiKey: apiKey }).select('+encryptedApiKey');
+        const hashedApiKey = helperCrypto.hash(apiKey);
+        const school = await schoolModel.findOne({ encryptedApiKey: hashedApiKey }).select('+encryptedApiKey');
 
         if (!school) {
+            console.log(apiKey);
             return res.status(401).json({ message: "API key invalide." });
         }
 

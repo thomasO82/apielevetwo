@@ -32,11 +32,11 @@ exports.updateStuddent = async (req, res) => {
             if (req.file) {
                 req.body.avatar = req.file.filename
             }
-            const result = await studentModel.updateOne({ _id: req.params.studdentId }, { $set: req.body },{runValidators:true});
-            if (result.modifiedCount > 0) {
-                res.status(200).json({ message: 'Updated with success' });
+            const result = await studentModel.findByIdAndUpdate(req.params.studdentId, { $set: req.body },{runValidators:true, new:true});
+            if (result) {
+                res.status(200).json({ message: 'Updated with success', data: result });
             } else {
-                res.status(404).json({ message: "Can't Update" });
+                res.status(404).json({ message: "Can't Update, this document is not found" });
             }
         }
     } catch (error) {
