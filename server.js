@@ -38,7 +38,6 @@ app.use(promoRouter)
 app.use(schoolRouter)
 app.use(studdentRouter)
 
-// Ne se connecte à MongoDB que si ce n'est pas un test
 if (process.env.NODE_ENV !== 'test') {
     console.log("connection in process....");
     mongoose.connect(process.env.MONGOURI).then(() => {
